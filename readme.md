@@ -67,7 +67,7 @@
 مثل آرایه ، مپ هم در زبان کهربا از انعطاف بالایی برخوردار است و میتوانید هر نوع داده ای را درون مپ قرار دهید.
 
     data = {"name":"Kahroba","version":0.1}
-    println(data["name])
+    println(data["name"])
 خروجی
 
     Kahroba
