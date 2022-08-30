@@ -3,11 +3,12 @@
 هدف این زبان سادگی و انعطاف پذیری و راحتی استفاده است
 
 ## نحوه استفاده از زبان کهربا
-برای اجرای برنامه های به زبان کهربا لازم است برنامه خود را در فایلی با پسوند .kahroba بسازید و از خط فرمان برنامه را اجرا کنید
 
-    kahroba main.kahroba     // linux
-    kahroba.exe main.kahroba // windows
-    kahroba_mac main.kahroba // mac
+برای اجرای برنامه های به زبان کهربا لازم است برنامه خود را در فایلی با پسوند .kahroba بسازید (مانند main.kahroba) و از خط فرمان برنامه را اجرا کنید:  
+
+    ./kahroba main.kahroba     // linux
+    kahroba.exe main.kahroba   // windows
+    kahroba_mac main.kahroba   // mac
 
 میتوانید از لینک های زیر فایل های اجرایی مربوط به سیستم عامل خود را دانلود کنید
 [لینوکس](https://github.com/kahroba-lang/kahroba/releases/download/0.1/kahroba)
@@ -67,7 +68,7 @@
 مثل آرایه ، مپ هم در زبان کهربا از انعطاف بالایی برخوردار است و میتوانید هر نوع داده ای را درون مپ قرار دهید.
 
     data = {"name":"Kahroba","version":0.1}
-    println(data["name])
+    println(data["name"])
 خروجی
 
     Kahroba
