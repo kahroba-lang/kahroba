@@ -182,6 +182,7 @@ func NewParser(tokens chan Token) *parser {
 		FOR:      p.parseFor,
 		RETURN:   p.parseReturn,
 		SWAP:     p.parseSwap,
+		INPUT:     p.parseInput,
 		LEN:      p.parseLen,
 	}
 
@@ -1039,8 +1040,22 @@ func (p *parser) parseSwap() Node {
 }
 
 /*
-این استراکت برای نگهداری طول یک آرایه یا مپ استفاده میشود
+این استراکت برای دریافت ورودی استفاده میشود
 */
+type Input struct {
+	A Node
+}
+
+func (p *parser) parseInput() Node {
+	p.next() // از روی توکن input میپریم
+	p.next() // از روی توکن ) میپریم
+	ret := Input{
+		A: p.parseExpression(LOWEST_PRIORITY), // promp را پردازش میکنیم
+	}
+	p.next()
+	return ret
+}
+
 type Len struct {
 	ArrMap Node
 }
