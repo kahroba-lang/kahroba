@@ -16,6 +16,12 @@
 [ویندوز](https://github.com/kahroba-lang/kahroba/releases/download/0.1/kahroba.exe) \
 [مک](https://github.com/kahroba-lang/kahroba/releases/download/0.1/kahroba_mac)
 
+همچنین میتوانید کهربا را از سورس کد بیلد بگیرید(به گیت و نسخه 1.19 گولنگ نیاز خواهید داشت) :
+```
+$ git clone https://github.com/kahroba-lang/kahroba.git
+$ cd kahroba
+$ go build
+```
 
 ## کامنت
 
