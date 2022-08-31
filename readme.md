@@ -10,9 +10,10 @@
     kahroba.exe main.kahroba   // windows
     kahroba_mac main.kahroba   // mac
 
-میتوانید از لینک های زیر فایل های اجرایی مربوط به سیستم عامل خود را دانلود کنید
-[لینوکس](https://github.com/kahroba-lang/kahroba/releases/download/0.1/kahroba)
-[ویندوز](https://github.com/kahroba-lang/kahroba/releases/download/0.1/kahroba.exe)
+میتوانید از لینک های زیر فایل های اجرایی مربوط به سیستم عامل خود را دانلود کنید :
+
+[لینوکس](https://github.com/kahroba-lang/kahroba/releases/download/0.1/kahroba) \
+[ویندوز](https://github.com/kahroba-lang/kahroba/releases/download/0.1/kahroba.exe) \
 [مک](https://github.com/kahroba-lang/kahroba/releases/download/0.1/kahroba_mac)
 
 
