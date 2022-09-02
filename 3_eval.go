@@ -778,7 +778,7 @@ input
 */
 func (n Input) Eval(scope *Scope) any {
 	reader := bufio.NewReader(os.Stdin)
-	prompt := n.A.Eval(scope)
+	prompt := n.Promp.Eval(scope)
 	fmt.Print(prompt)
 	text, _ := reader.ReadString('\n')
 	return text

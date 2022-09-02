@@ -1043,19 +1043,22 @@ func (p *parser) parseSwap() Node {
 این استراکت برای دریافت ورودی استفاده میشود
 */
 type Input struct {
-	A Node
+	Promp Node
 }
 
 func (p *parser) parseInput() Node {
 	p.next() // از روی توکن input میپریم
 	p.next() // از روی توکن ) میپریم
 	ret := Input{
-		A: p.parseExpression(LOWEST_PRIORITY), // promp را پردازش میکنیم
+		Promp: p.parseExpression(LOWEST_PRIORITY), // promp را پردازش میکنیم
 	}
 	p.next()
 	return ret
 }
 
+/*
+این استراکت برای نگهداری طول یک آرایه یا مپ استفاده میشود
+*/
 type Len struct {
 	ArrMap Node
 }
