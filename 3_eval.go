@@ -13,7 +13,9 @@ Eval
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strconv"
 )
 
@@ -767,6 +769,19 @@ func (n Swap) Eval(scope *Scope) any {
 	scope.SetVariable(n.A, n.B.Eval(scope))
 	scope.SetVariable(n.B, t)
 	return nil
+}
+
+/*
+input
+برای دریافت ورودی از کاربر استفاده میشود
+یک متغیر را به عنوان ورودی میگیرد و مقدار آن را برابر با رشته ورودی قرار میدهد
+*/
+func (n Input) Eval(scope *Scope) any {
+	reader := bufio.NewReader(os.Stdin)
+	prompt := n.Promp.Eval(scope)
+	fmt.Print(prompt)
+	text, _ := reader.ReadString('\n')
+	return text
 }
 
 /*

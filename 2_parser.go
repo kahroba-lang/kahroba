@@ -182,6 +182,7 @@ func NewParser(tokens chan Token) *parser {
 		FOR:      p.parseFor,
 		RETURN:   p.parseReturn,
 		SWAP:     p.parseSwap,
+		INPUT:     p.parseInput,
 		LEN:      p.parseLen,
 	}
 
@@ -1035,6 +1036,23 @@ func (p *parser) parseSwap() Node {
 	p.next()                                   // از روی متغیر اول میپریم
 	p.next()                                   // از روی کاما میپریم
 	ret.B = p.parseExpression(LOWEST_PRIORITY) // متغیر دوم را پردازش میکنیم
+	return ret
+}
+
+/*
+این استراکت برای دریافت ورودی استفاده میشود
+*/
+type Input struct {
+	Promp Node
+}
+
+func (p *parser) parseInput() Node {
+	p.next() // از روی توکن input میپریم
+	p.next() // از روی توکن ) میپریم
+	ret := Input{
+		Promp: p.parseExpression(LOWEST_PRIORITY), // promp را پردازش میکنیم
+	}
+	p.next()
 	return ret
 }
 

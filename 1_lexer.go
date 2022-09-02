@@ -120,6 +120,7 @@ const (
 	FOR            = "FOR"
 	DOTDOT         = ".."
 	SWAP           = "SWAP"
+	INPUT           = "INPUT"
 	LEN            = "LEN"
 )
 
@@ -141,6 +142,7 @@ var keywords = map[string]Type{
 	"else":    ELSE,
 	"for":     FOR,
 	"swap":    SWAP,
+	"input":    INPUT,
 	"len":     LEN,
 }
 
