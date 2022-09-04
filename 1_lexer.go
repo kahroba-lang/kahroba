@@ -120,7 +120,7 @@ const (
 	FOR            = "FOR"
 	DOTDOT         = ".."
 	SWAP           = "SWAP"
-	INPUT           = "INPUT"
+	INPUT          = "INPUT"
 	LEN            = "LEN"
 )
 
@@ -142,7 +142,7 @@ var keywords = map[string]Type{
 	"else":    ELSE,
 	"for":     FOR,
 	"swap":    SWAP,
-	"input":    INPUT,
+	"input":   INPUT,
 	"len":     LEN,
 }
 
@@ -283,7 +283,7 @@ IDENT
 func (l *lexer) lexIdent(r rune) {
 	var str string
 	for {
-		if unicode.IsLetter(r) {
+		if unicode.IsLetter(r) || unicode.IsDigit(r) {
 			str += string(r)
 		} else {
 			l.reader.UnreadRune()

@@ -1,0 +1,30 @@
+fn qsort(arr) {
+    sort(arr,0,len(arr)-1)
+}
+
+fn sort(arr,l,r) {
+    if l < r {
+        q = partition(arr,l,r)
+        sort(arr,l,q-1)
+        sort(arr,q+1,r)
+    }
+}
+
+fn partition(arr,l,r)  {
+    i = l
+    for j in l..r {
+        if a[j] < a[r] {
+            swap(a[i],a[j])
+            i = i + 1
+        }
+    }
+    swap(a[i],a[r])
+    i
+}
+
+
+a = [5,1,2,4,3,9,8,7,6,0]
+
+println(a)
+qsort(a)
+println(a)
