@@ -4,12 +4,12 @@
 
 ## نحوه استفاده از زبان کهربا
 
-برای اجرای برنامه های به زبان کهربا لازم است برنامه خود را در فایلی با پسوند .krb بسازید (مانند main.krb) و از خط فرمان برنامه را اجرا کنید:  
-
-    ./kahroba main.kahroba     // linux
-    kahroba.exe main.kahroba   // windows
-    kahroba_mac main.kahroba   // mac
-
+برای اجرای برنامه های به زبان کهربا لازم است برنامه خود را در فایلی با پسوند .krb یا .kahroba بسازید (مانند main.krb) و از خط فرمان برنامه را اجرا کنید:  
+```bash
+./kahroba main.krb    // linux
+kahroba.exe main.krb   // windows
+kahroba_mac main.krb   // mac
+```
 میتوانید از لینک های زیر فایل های اجرایی مربوط به سیستم عامل خود را دانلود کنید :
 
 [لینوکس](https://github.com/kahroba-lang/kahroba/releases/download/0.1/kahroba) \
@@ -31,105 +31,106 @@ $ go build
 
 ## تعریف رشته ها
 رشته ها در زبان کهربا بین دو کوتیشن قرار میگیرند
-
-    "Hello World!"
-
+```rust
+"Hello World!"
+```
 دو رشته را توسط عملگر جمع میتوانید به هم متصل کنید
-
-    "Hello " + "World!" // Hello World
-
+```rust
+"Hello " + "World!" // Hello World
+```
 در زبان کهربا میتوانید رشته ها را با اعداد جمع کنید
 اگر عملوند سمت چپ رشته باشد نتیجه رشته خواهد شد  
 اگر عملوند سمت چپ عدد باشد نتیجه عدد خواهد شد
 مثال:
-
-    1 + "1" // 2
-    "1" + 1 // 11
-
+```rust
+1 + "1" // 2
+"1" + 1 // 11
+```
 
 ## تعریف متغیر
 متغیرها در زبان کهربا تایپ ندارند و نحوه تعریف کردن اونها به شکل زیر است
-
-    name = "Kahroba"
-    version = 0.1
-    a = 1 + 2
-    a = "text"
-
+```rust
+name = "Kahroba"
+version = 0.1
+a = 1 + 2
+a = "text"
+```
 ## آرایه
 آرایه ها در زبان کهربا بسیار انعطاف پذیرند و میتوانید در آرایه دیتا تایپ های مختلفی را ذخیره کنید.
-
-    nums = [1,2,3,4]
-    everything = [1,"kahroba",0.1]
-
+```rust
+nums = [1,2,3,4]
+everything = [1,"kahroba",0.1]
+```
 برای دسترسی به یک عنصر از آرایه به شکل زیر عمل میکنیم:
-
-    nums[0] // 1
-    everything[1] // "kahroba"
-
+```rust
+nums[0] // 1
+everything[1] // "kahroba"
+```
 به وسیله فانکشن len میتوانیم طول آرایه را بدست بیاوریم
-
-    a = [1,2,3,4,5]
-    println(len(a)) // 5
-
+```rust
+a = [1,2,3,4,5]
+println(len(a)) // 5
+```
 ## مپ
 مثل آرایه ، مپ هم در زبان کهربا از انعطاف بالایی برخوردار است و میتوانید هر نوع داده ای را درون مپ قرار دهید.
-
-    data = {"name":"Kahroba","version":0.1}
-    println(data["name"])
-خروجی
-
-    Kahroba
-
+```rust
+data = {"name":"Kahroba","version":0.1}
+println(data["name"])
+```
+خروجی:
+```
+Kahroba
+```
 **نکته:** میتوانید از فانکشن len برای محاسبه طول مپ استفاده کنید
 
 ## boolean
 زبان کهربا از نوع boolean پشتیبانی میکند
-
-    a = true
-    b = false
-    !a // false
-    !b // true
-    a == b // false
-    a != b // true
-
+```rust
+a = true
+b = false
+!a // false
+!b // true
+a == b // false
+a != b // true
+```
 ## چاپ در خروجی
 به وسیله دستور print یا println میتوان عملیات چاپ در خروجی را انجام داد
 دستورات چاپ میتوانند چندین ورودی داشته باشند:
-
-    println("سلام دنیا!")
-    print("زبان ")
-    print("کهربا ")
-    println("version:",0.1)
-
-  خروجی:
-
-    سلام دنیا!
-    زبان کهربا version 0.1
-
+```rust
+println("سلام دنیا!")
+print("زبان ")
+print("کهربا ")
+println("version:",0.1)
+```
+خروجی:
+```
+سلام دنیا!
+زبان کهربا version 0.1
+```
 ## گرفتن ورودی
 به وسیله دستور input میتوان یک رشته را از کاربر به عنوان ورودی دریافت کرد:
-
-    name = input("What is your name:")
-    print("Hello, ",name)
-
+```rust
+name = input("What is your name:")
+print("Hello, ",name)
+```
 ## تعریف فانکشن
 فانکشن ها در زبان کهربا به وسیله کلمه کلیدی fn تعریف میشوند.
 فانکشن های میتوانند مقداری باز گردانند یا باز نگردانند.
 بصورت پیش فرض آخرین دستور یک فانکشن برگردانده میشود و استفاده از کلمه return اختیاری است
-
-    fn sum(a,b) {
-        a+b
-    }
-
+```rust
+fn sum(a,b) {
+    a+b
+}
+```
 توابع میتوانند بصورت بازگشتی فراخوانی شوند. پیاده سازی مثال کلاسیک فاکتوریل:
+```rust
+fn f(n) {
+    if n <= 1 { 1 }
+    n * f(n-1)
+}
 
-    fn f(n) {
-        if n <= 1 { 1 }
-        n * f(n-1)
-    }
-
-    println(f(5)) // 120
-
+println(f(5)) // 120
+```
 ورودی فانکشن میتواند از هر نوعی باشد حتی یک فانکشن دیگر:
 
     fn getName() {
@@ -146,41 +147,41 @@ $ go build
 
 ## swap
 توسط این فانکشن میتوانید مقدار دو متغیر را باهم عوض کنید
-
-    a = 5
-    b = 10
-    println(a,b)
-    swap(a,b)
-    println(a,b)
-
+```rust
+a = 5
+b = 10
+println(a,b)
+swap(a,b)
+println(a,b)
+```
 خروجی
-
-    5 10
-    10 5
-
+```bash
+5 10
+10 5
+```
 # کنترل جریان برنامه
 ## دستورات شرطی
 به وسیله دستور if میتوان از دستورات شرطی استفاده کرد
-
-    if a + b > c {
-        print("OK")
-    }
-
+```rust
+if a + b > c {
+    print("OK")
+}
+```
 همچین میتوان از دستور else برای زمان عدم صحت شرط استفاده کرد
-
-    if a + b > c {
-        print("OK")
-    } else {
-        print("Not OK")
-    }
-
+```rust
+if a + b > c {
+    print("OK")
+} else {
+    print("Not OK")
+}
+```
 ## حلقه تکرار
 برای استفاده از حلقه در زبان کهربا از دستور for به شکل زیر استفاده میشود
-
-    for i in 1..5 {
-        println(i)
-    }
-
+```rust
+for i in 1..5 {
+    println(i)
+}
+```
 خروجی:
 
     1
@@ -190,11 +191,11 @@ $ go build
     5
 
 میتوانید تعداد گام های حلقه را به این شکل مشخص کنید:
-
-    for i in 1..5:2 {
-        println(i)
-    }
-
+```rust
+for i in 1..5:2 {
+    println(i)
+}
+```
 خروجی:
 
     1
@@ -203,89 +204,90 @@ $ go build
 
 به وسیله حلقه for میتوانید به روی رشته ها، آرایه ها و مپ ها پیمایش انجام دهید
 ### پیمایش رشته
-
-        for s in "Hello World" {
-            print(s," ")
-        }
-
+```rust
+for s in "Hello World" {
+    print(s," ")
+}
+```
 خروجی
-
-        H e l l o  W o r l d
-
+```bash
+H e l l o  W o r l d
+```
 ### پیمایش آرایه
+```rust
+arr = ["Kahroba","version",0.1]
+for v in arr {
+    print(v)
+}
 
-    arr = ["Kahroba","version",0.1]
-    for v in arr {
-        print(v)
-    }
-
-    for i,v in arr {
-        println(i,":",v)
-    }
-
+for i,v in arr {
+    println(i,":",v)
+}
+```
 
 خروجی
+```bash
+Kahroba version 0.1
 
-    Kahroba version 0.1
-
-    0:Kahroba
-    1:version
-    2:0.1
-
+0:Kahroba
+1:version
+2:0.1
+```
 ### پیمایش مپ
+```rust
+data = {"name":"Kahroba","version":0.1}
+for v in data {
+    println(v)
+}
 
-    data = {"name":"Kahroba","version":0.1}
-    for v in data {
-        println(v)
-    }
-
-    for k,v in data {
-        println(k,":",v)
-    }
-
+for k,v in data {
+    println(k,":",v)
+}
+```
 خروجی
+```bash
+Kahroba
+0.1
 
-    Kahroba
-    0.1
-
-    name : Kahroba
-    version : 0.1
-
+name : Kahroba
+version : 0.1
+```
 
 ## پیاده سازی الگوریتم quicksort توسط کهربا
+```rust
+fn qsort(arr) {
+    sort(arr,0,len(arr)-1)
+}
 
-    fn qsort(arr) {
-        sort(arr,0,len(arr)-1)
+fn sort(arr,l,r) {
+    if l < r {
+        q = partition(arr,l,r)
+        sort(arr,l,q-1)
+        sort(arr,q+1,r)
     }
+}
 
-    fn sort(arr,l,r) {
-        if l < r {
-            q = partition(arr,l,r)
-            sort(arr,l,q-1)
-            sort(arr,q+1,r)
+fn partition(arr,l,r)  {
+    i = l
+    for j in l..r {
+        if a[j] < a[r] {
+            swap(a[i],a[j])
+            i = i + 1
         }
     }
-
-    fn partition(arr,l,r)  {
-        i = l
-        for j in l..r {
-            if a[j] < a[r] {
-                swap(a[i],a[j])
-                i = i + 1
-            }
-        }
-        swap(a[i],a[r])
-        i
-    }
+    swap(a[i],a[r])
+    i
+}
 
 
-    a = [5,1,2,4,3,9,8,7,6,0]
+a = [5,1,2,4,3,9,8,7,6,0]
 
-    println(a)
-    qsort(a)
-    println(a)
-
+println(a)
+qsort(a)
+println(a)
+```
 خروجی
-
-    [5 1 2 4 3 9 8 7 6 0]
-    [0 1 2 3 4 5 6 7 8 9]
+```bash
+[5 1 2 4 3 9 8 7 6 0]
+[0 1 2 3 4 5 6 7 8 9]
+```
