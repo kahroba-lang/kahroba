@@ -122,6 +122,7 @@ const (
 	SWAP           = "SWAP"
 	INPUT          = "INPUT"
 	LEN            = "LEN"
+	IMPORT         = "IMPORT"
 )
 
 /*
@@ -144,6 +145,7 @@ var keywords = map[string]Type{
 	"swap":    SWAP,
 	"input":   INPUT,
 	"len":     LEN,
+	"import":  IMPORT,
 }
 
 /*

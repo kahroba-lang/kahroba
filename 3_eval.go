@@ -15,6 +15,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 )
@@ -768,6 +769,25 @@ func (n Swap) Eval(scope *Scope) any {
 	t := n.A.Eval(scope)
 	scope.SetVariable(n.A, n.B.Eval(scope))
 	scope.SetVariable(n.B, t)
+	return nil
+}
+
+/*
+import
+برای import کردن یک فایل استفاده می شود
+*/
+func (n Import) Eval(scope *Scope) any {
+	t := n.Filename.Eval(scope).(string)
+
+	input, err := os.ReadFile(t)
+	if err != nil {
+		log.Fatal(err)
+	}
+	l := NewLexer(string(input))
+	p := NewParser(l.tokens)
+
+	Eval(p.nodes, scope)
+
 	return nil
 }
 
