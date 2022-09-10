@@ -182,8 +182,9 @@ func NewParser(tokens chan Token) *parser {
 		FOR:      p.parseFor,
 		RETURN:   p.parseReturn,
 		SWAP:     p.parseSwap,
-		INPUT:     p.parseInput,
+		INPUT:    p.parseInput,
 		LEN:      p.parseLen,
+		IMPORT:   p.parseImport,
 	}
 
 	/*
@@ -372,7 +373,7 @@ func (p *parser) parseExpression(priority int) Node {
 		چک میکند که اولویت توکن بعدی یعنی ضرب از جمع بیشتر است؟ جواب خیر است پس وارد حلقه نمیشود
 		و متغیر لفت که مقدار 3 را دارد برمیگرداند. در اینجا برمیگردیم به دومین اجرای فانکشن
 		parseExpression
-		مقدار لفت و رایت مشخص شده و برمیگردیم به اجرا اول متتد
+		مقدار لفت و رایت مشخص شده و برمیگردیم به اجرا اول متد
 		parseExpression
 		با برگشت به این متد مقدار متغیر لفت تغییر کرده و تبدیل شده است به
 		(2*3)
@@ -451,7 +452,7 @@ func (p *parser) parseExpression(priority int) Node {
 ساده ترین توکنی که میتوانیم پردازش کنیم توکن رشته است
 ساختار استراکت رشته به این شکل است که یک متغیر به نام
 Value
-از نوع رشتته در خودش دارد که مقدار آن توکن را در بر میگیرد
+از نوع رشته در خودش دارد که مقدار آن توکن را در بر میگیرد
 مثال
 "Hello World!"
 */
@@ -549,14 +550,14 @@ type Return struct {
 }
 
 func (p *parser) parseReturn() Node {
-	p.next() // از روی کلمه کلیدی ریتر میپریم
+	p.next() // از روی کلمه کلیدی ریترن میپریم
 	return Return{
 		Value: p.parseExpression(LOWEST_PRIORITY),
 	}
 }
 
 /*
-برای پارس کردن یک متغیر استراکتی تغریف میکنیم که حاوی دو متغیر است که هر دو از نوع
+برای پارس کردن یک متغیر استراکتی تعریف میکنیم که حاوی دو متغیر است که هر دو از نوع
 Node
 هستند. مقدار
 Name
@@ -609,7 +610,7 @@ a = (b+c) * d
 func (p *parser) parseGrouped() Node {
 	p.next() // از روی پرانتز باز میپریم
 	exp := p.parseExpression(LOWEST_PRIORITY)
-	p.next() // از روی پرانتز بسته میپیم
+	p.next() // از روی پرانتز بسته میپریم
 	return exp
 }
 
@@ -1036,6 +1037,26 @@ func (p *parser) parseSwap() Node {
 	p.next()                                   // از روی متغیر اول میپریم
 	p.next()                                   // از روی کاما میپریم
 	ret.B = p.parseExpression(LOWEST_PRIORITY) // متغیر دوم را پردازش میکنیم
+	return ret
+}
+
+/*
+این استراکت برای دریافت ورودی های
+import
+استفاده می شود
+*/
+type Import struct {
+	Filename Node
+}
+
+func (p *parser) parseImport() Node {
+	p.next() // از روی توکن import میپریم
+	p.next() // از روی ) می پریم
+	ret := Import{
+		Filename: p.parseExpression(LOWEST_PRIORITY), // نام فایل را پردازش میکنیم
+	}
+	p.next()
+
 	return ret
 }
 
