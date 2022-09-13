@@ -66,6 +66,15 @@ everything = [1,"kahroba",0.1]
 nums[0] // 1
 everything[1] // "kahroba"
 ```
+برای آنکه اندازه آرایه را مشخص کنید، اندازه آرایه را با : از مقادیر آرایه جدا کنید
+
+```rust
+array = [5: 1, 2] // [1, 2, nil, nil, nil]
+
+println(array[0]) // output : 1
+println(array[4]) // output : nil
+```
+
 به وسیله فانکشن len میتوانیم طول آرایه را بدست بیاوریم
 ```rust
 a = [1,2,3,4,5]
