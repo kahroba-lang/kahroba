@@ -523,9 +523,9 @@ func (n If) Eval(scope *Scope) any {
 a = [1,5+3,4/3,hello()]
 */
 func (n Array) Eval(scope *Scope) any {
-	ret := []any{}
-	for _, node := range n.Nodes {
-		ret = append(ret, node.Eval(scope))
+	ret := make([]any, n.Size)
+	for i, node := range n.Nodes {
+		ret[i] = node.Eval(scope)
 	}
 	return ret
 }

@@ -874,12 +874,22 @@ mylist = [ 1, "kahroba", 3.14, hello() ]
 پس استراکتی که برای پردازش آرایه ها نیاز داریم فقط یک اسلایس از نود ها هست
 */
 type Array struct {
+	Size  int
 	Nodes []Node
 }
 
 func (p *parser) parseArray() Node {
 	p.next() // از روی براکت باز میپریم
+
+	var size int
+	if p.nextToken.Value == ":" { //  در صورتی که اندازه آرایه مشخص شده باشد آن را مقدار دهی میکنیم
+		size, _ = strconv.Atoi(p.currentToken.Value)
+		p.next() // از روی توکن اندازه آرایه می پریم
+		p.next() // از روی توکن : می پریم
+	}
+
 	ret := Array{
+		Size:  size,
 		Nodes: make([]Node, 0), // اسلایس نود ها را مقدار دهی اولیه میکنیم
 	}
 	/*
@@ -892,6 +902,11 @@ func (p *parser) parseArray() Node {
 			p.next()
 		}
 	}
+
+	if ret.Size == 0 { // در صورتی که اندازه ارایه مقداردهی نشده باشد خودمان آن را محاسبه می کنیم
+		ret.Size = len(ret.Nodes)
+	}
+
 	return ret
 }
 
