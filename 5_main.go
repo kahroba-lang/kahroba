@@ -19,6 +19,8 @@ package main
 import (
 	"log"
 	"os"
+	"strings"
+	"time"
 )
 
 /*
@@ -40,8 +42,11 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	l := NewLexer(string(input))
+	str := string(input)
+	str = strings.NewReplacer(`\n`, "\n", `\t`, "\t", `\r`, "\r").Replace(str)
+	l := NewLexer(str)
 	p := NewParser(l.tokens)
 	scope := NewScope(nil)
 	Eval(p.nodes, scope)
+	time.Sleep(time.Second * 30)
 }
