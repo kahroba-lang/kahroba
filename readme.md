@@ -92,6 +92,8 @@ b = false
 !b // true
 a == b // false
 a != b // true
+true or false // true
+true and false // false
 ```
 ## چاپ در خروجی
 به وسیله دستور print یا println میتوان عملیات چاپ در خروجی را انجام داد
