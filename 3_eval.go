@@ -813,6 +813,8 @@ len
 func (n Len) Eval(scope *Scope) any {
 	v := n.ArrMap.Eval(scope)
 	switch t := v.(type) {
+	case string:
+		return len(t)
 	case map[any]any:
 		return len(t)
 	case []any:
