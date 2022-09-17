@@ -46,7 +46,7 @@ import (
 const (
 	LOWEST_PRIORITY = iota + 1
 	EQUALS          // ==
-	LESSGREATER     // > or <
+	LESSGREATER     // > < >= <=
 	SUM             // +
 	PRODUCT         // *
 	PREFIX          // -5 or !true
@@ -190,7 +190,7 @@ func NewParser(tokens chan Token) *parser {
 	/*
 		عملگرهای ریاضی و منطقی که نیاز به دو عملوند دارند و بصورت باینری پرداش میشوند
 	*/
-	for _, typ := range []Type{PLUS, MINUS, STAR, SLASH, EQEQ, NEQ, GREATER, GEQ, LESSER, LEQ} {
+	for _, typ := range []Type{OR, AND, PLUS, MINUS, STAR, SLASH, EQEQ, NEQ, GREATER, GEQ, LESSER, LEQ} {
 		p.binaryOperations[typ] = p.parseBinaryOperation
 	}
 

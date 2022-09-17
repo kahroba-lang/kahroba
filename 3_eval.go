@@ -432,9 +432,9 @@ func evalBoolBool(ll, rr any, operator string) bool {
 		return l == r
 	case "!=":
 		return l != r
-	case "||":
+	case "or":
 		return l || r
-	case "&&":
+	case "and":
 		return l && r
 	}
 	return false

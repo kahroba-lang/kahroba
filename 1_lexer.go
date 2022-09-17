@@ -103,7 +103,6 @@ const (
 	LESSER         = "<"
 	GEQ            = ">="
 	LEQ            = "<="
-	NEWVAR         = ":="
 	STRING         = "STRING"
 	INT            = "INT"
 	FLOAT          = "FLOAT"
@@ -123,6 +122,8 @@ const (
 	INPUT          = "INPUT"
 	LEN            = "LEN"
 	IMPORT         = "IMPORT"
+	OR             = "OR"
+	AND            = "AND"
 )
 
 /*
@@ -146,6 +147,8 @@ var keywords = map[string]Type{
 	"input":   INPUT,
 	"len":     LEN,
 	"import":  IMPORT,
+	"or":      OR,
+	"and":     AND,
 }
 
 /*
@@ -177,7 +180,6 @@ var symobls = map[string]Type{
 	">=": GEQ,
 	"<":  LESSER,
 	"<=": LEQ,
-	":=": NEWVAR,
 }
 
 /*
