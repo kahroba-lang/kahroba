@@ -2,8 +2,14 @@
 زبان **کهربا** یک پروژه آموزشی جهت نمایش نحوه کار یک زبان برنامه نویسی است
 هدف این زبان سادگی و انعطاف پذیری و راحتی استفاده است
 
-## نحوه استفاده از زبان کهربا
+[![Documents](https://badgen.net/badge/Documents/passing/blue?icon=wiki)](https://kahroba-lang.github.io/docs/latest)
+[![Version](https://badgen.net/badge/Ver/0.1/orange?icon=github)](https://kahroba-lang.github.io/docs/0.1)
+[![status](https://badgen.net/badge/Status/Released/green?icon=now)](https://kahroba-lang.github.io/docs/0.1)
 
+
+## نحوه استفاده از زبان کهربا 
+برای مستندات کامل تر لطفا داکیومنت کهربا را از [اینجا](https://kahroba-lang.github.io/docs/latest) بخوانید
+.
 برای اجرای برنامه های به زبان کهربا لازم است برنامه خود را در فایلی با پسوند .krb یا .kahroba بسازید (مانند main.krb) و از خط فرمان برنامه را اجرا کنید:  
 ```bash
 ./kahroba main.krb    // linux
