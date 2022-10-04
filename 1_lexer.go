@@ -384,7 +384,6 @@ func (l *lexer) lexSymbol(r rune) {
 	}
 	if t, ok := symobls[singleCharSymbol]; ok {
 		l.reader.UnreadRune()
-		l.reader.UnreadRune()
 		l.emit(t, singleCharSymbol)
 		return
 	}
