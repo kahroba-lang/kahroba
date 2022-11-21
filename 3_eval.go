@@ -51,7 +51,6 @@ func NewScope(scope *Scope) *Scope {
 یک متغیر را در لیست متغیر ها ثبت میکند
 */
 func (e Scope) SetVariable(k Node, v any) {
-
 	switch node := k.(type) {
 	case Identifier:
 		e.variables[node.Token.Value] = v
@@ -627,7 +626,7 @@ for
 هم استفاده میکنیم و آنجا نیازی نیست که در هر بار اجرای حلقه اسکوپ جدید استفاده شود
 وقتی به توضیح حلقه رسیدیم این موضوع را بیشتر شفاف میکنم
 */
-func argsToscope(fn Function, args []any, new bool) *Scope {
+func argsToScope(fn Function, args []any, new bool) *Scope {
 	scope := fn.Scope
 	if new {
 		scope = NewScope(fn.Scope)
@@ -643,7 +642,7 @@ func argsToscope(fn Function, args []any, new bool) *Scope {
 که قبلا در اجرای بلاک با نحوه اجرای آن آشنا شدید
 */
 func applyfunction(fn Function, args []any, new bool) any {
-	newScope := argsToscope(fn, args, new)
+	newScope := argsToScope(fn, args, new)
 	return fn.Body.Eval(newScope)
 }
 
