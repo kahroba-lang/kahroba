@@ -1,0 +1,12 @@
+fn isEven(num) {
+    if (num/2)*2 == num {
+         true
+    } else {
+         false
+    }
+}
+
+println(isEven(1)) // false
+println(isEven(2)) // true
+println(isEven(5)) // false
+println(isEven(8)) // true
