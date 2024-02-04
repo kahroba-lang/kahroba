@@ -25,9 +25,19 @@ $ go build
 
 ## Comments
 
+### Single line comment:
 Like most of languages, you can use // to define your comments, they won't get interpreted:
 ```rust
 // This is my first program in Kahroba programming language, Let's Rock!
+```
+
+### Multiline comment:
+You can also have multiline comments in your code, codes within multiline comment block won't get interpreted:
+```rust
+/*
+ This is my first program in Kahroba programming language,
+ Let's Rock!
+*/
 ```
 
 ## Strings

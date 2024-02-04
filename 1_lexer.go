@@ -46,6 +46,7 @@ package main
 import (
 	"bufio"
 	"io"
+	"log"
 	"strings"
 	"unicode"
 )
@@ -255,6 +256,26 @@ func (l *lexer) lex() {
 	l.lex()
 }
 
+func (l *lexer) lexMultiLineComment() {
+	for {
+		str, err := l.reader.ReadString('*')
+		_ = str
+		if err != nil {
+			log.Fatal(err)
+			return
+		}
+		nextChar, _, err := l.reader.ReadRune()
+		if err != nil {
+			log.Fatal(err)
+			return
+		}
+		if nextChar == '/' {
+			break
+		}
+		l.reader.UnreadRune()
+	}
+}
+
 /*
 این متد وظیفه ساخت یک توکن با نوع و مقدار مورد نظر و اضافه کردن به چنل توکن ها را به عهده دارد
 */
@@ -389,6 +410,10 @@ func (l *lexer) lexSymbol(r rune) {
 	}
 	if doubleCharSymbol == "//" {
 		l.reader.ReadLine()
+		return
+	}
+	if doubleCharSymbol == "/*" {
+		l.lexMultiLineComment()
 		return
 	}
 	if t, ok := symobls[singleCharSymbol]; ok {
