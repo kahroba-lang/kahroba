@@ -46,6 +46,11 @@ Right side type of an operations automatically changes according to the left sid
 "1" + 1 // 11
 ```
 
+You can escape double quote character within a string:
+```rust
+"Normal text, \"quoted text\"" // Normal text, "quoted text"
+```
+
 ## Variables
 Kahroba is a dynamically typed language (like Python), the interpreter assigns variables a type at runtime based on the variable's value at the time.
 

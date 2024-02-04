@@ -266,12 +266,21 @@ func (l *lexer) emit(t Type, v string) {
 /*
 این ساده ترین متد ماست
 اگر به یک کوتیشن برخورد کردیم این متد اجرا میشود و ما تا به یک کوتیشن دیگر برسیم به خواندن ادامه میدهیم
-سپس کوتیشن ها را اول و آخر رشته حذف میکنیم و یک توکن از نوع استرینگ به چنل اضافه میکنیم
+اگر کوتیشنی که با آن مواجه میشویم با استفاده از کاراکتر بک اسلش (\) اِسکِیپ شده بود آن کوتیشن را به عنوان کوتیشن
+پایانی رشته در نظر نمی گیریم و خواندن را تاجایی که به اولین کوتیشن اسکیپ نشده برسیم ادامه می دهیم
+سپس کوتیشن ها را از اول و آخر رشته و بک اسلکش های اِسکِیپ کننده کوتیشن ها را حذف میکنیم
+در نهایت یک توکن از نوع استرینگ به چنل اضافه میکنیم
 */
 func (l *lexer) lexString() {
-	str, _ := l.reader.ReadString('"')
-	str = strings.TrimRight(str, `"`)
-	l.emit(STRING, str)
+	finalStr, _ := l.reader.ReadString('"')
+	str := finalStr
+	for strings.HasSuffix(str, "\\\"") {
+		str, _ = l.reader.ReadString('"')
+		finalStr += str
+	}
+	finalStr = strings.TrimRight(finalStr, `"`)
+	finalStr = strings.ReplaceAll(finalStr, "\\\"", "\"")
+	l.emit(STRING, finalStr)
 }
 
 /*
